@@ -29,7 +29,7 @@ resource "kubernetes_deployment" "app" {
       spec {
         container {
           name  = "app"
-          image = "yourdockerhub/trading-chart-service:latest"
+          image = "dntuanvu/trading-chart-service:latest"
           ports {
             container_port = 50051
           }

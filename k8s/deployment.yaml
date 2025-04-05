@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: yourdockerhub/trading-chart-service:latest
+          image: dntuanvu/trading-chart-service:latest
           ports:
             - containerPort: 50051
           env:
