@@ -25,26 +25,4 @@ docker-compose up --build
 
 ## 🧭 High-Level Architecture
 
-```mermaid
-flowchart TD
-    Binance[Binance WebSocket API]
-    GoService[Go Trading Chart Service]
-    Aggregator[OHLC Aggregator (1-min)]
-    GRPC[gRPC Server]
-    Postgres[PostgreSQL DB]
-    Clients[gRPC Clients (Dashboards, Subscribers)]
-
-    Binance --> GoService
-    GoService --> Aggregator
-    GoService --> GRPC
-    GoService --> Postgres
-    Aggregator --> GRPC
-    GRPC --> Clients
-
-    subgraph Infrastructure
-        K8s[Kubernetes Cluster]
-        Terraform[Terraform IaC]
-    end
-
-    K8s --> GoService
-    K8s --> Postgres
+![Architecture Diagram](trading-chart-service.png)
