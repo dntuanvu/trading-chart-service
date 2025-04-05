@@ -21,6 +21,7 @@ A high-performance service that fetches real-time tick data from Binance, aggreg
 ```bash
 cd docker
 docker-compose up --build
+```
 
 ## 🧭 High-Level Architecture
 
