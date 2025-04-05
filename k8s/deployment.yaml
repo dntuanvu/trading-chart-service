@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trading-chart-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trading-chart
+  template:
+    metadata:
+      labels:
+        app: trading-chart
+    spec:
+      containers:
+        - name: app
+          image: yourdockerhub/trading-chart-service:latest
+          ports:
+            - containerPort: 50051
+          env:
+            - name: DATABASE_URL
+              value: postgres://postgres:postgres@postgres:5432/trading?sslmode=disable
