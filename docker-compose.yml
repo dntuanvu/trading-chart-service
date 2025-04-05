@@ -3,8 +3,8 @@ version: "3.9"
 services:
   app:
     build:
-      context: ..
-      dockerfile: docker/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/trading?sslmode=disable
     ports:
@@ -23,6 +23,21 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  
+  migrate:
+    image: migrate/migrate
+    volumes:
+      - ./db/migrations:/migrations
+    entrypoint:
+      [
+        "migrate",
+        "-path", "/migrations",
+        "-database", "postgres://postgres:postgres@db:5432/trading?sslmode=disable",
+        "up"
+      ]
+    depends_on:
+      - db
+
 
 volumes:
   pgdata:
