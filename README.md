@@ -1,0 +1,23 @@
+# Trading Chart Service
+
+A high-performance service that fetches real-time tick data from Binance, aggregates into OHLC candlesticks, streams via gRPC, and stores data in PostgreSQL.
+
+## 🧩 Features
+- Real-time Binance WebSocket integration
+- 1-minute OHLC aggregation
+- gRPC streaming API
+- PostgreSQL persistence
+- Docker + Kubernetes ready
+- Terraform for infrastructure
+
+## 🚀 Quick Start (Local Dev)
+
+### Prerequisites
+- Docker
+- `protoc` (for gRPC codegen)
+
+### Run locally
+
+```bash
+cd docker
+docker-compose up --build
