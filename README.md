@@ -21,3 +21,25 @@ A high-performance service that fetches real-time tick data from Binance, aggreg
 ```bash
 cd docker
 docker-compose up --build
+
+## 🧭 High-Level Architecture
+
+```mermaid
+flowchart TD
+    Binance[Binance WebSocket API]
+    Binance -->|Real-time Tick Data| GoService[Go Trading Service]
+
+    GoService --> Aggregator[OHLC Aggregator (1-min)]
+    GoService --> gRPC[gRPC Server]
+    GoService --> Postgres[PostgreSQL DB]
+
+    Aggregator -->|Every 1 min| gRPC
+    gRPC --> Clients[Trader Dashboards (gRPC Subscribers)]
+
+    subgraph Infrastructure
+        K8s[Kubernetes Deployment]
+        Terraform[Terraform IaC]
+    end
+
+    K8s --> GoService
+    K8s --> Postgres
