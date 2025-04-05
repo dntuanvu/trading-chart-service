@@ -2,12 +2,10 @@ package persistence
 
 import (
 	"context"
-	"fmt"
 	"log"
-	"time"
 
+	"github.com/dntuanvu/trading-chart-service/internal/models"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"trading-chart-service/internal/models"
 )
 
 type Repo struct {

@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"trading-chart-service/internal/models"
+	"github.com/dntuanvu/trading-chart-service/internal/models"
 )
 
 type Aggregator struct {

@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/dntuanvu/trading-chart-service/internal/aggregator"
+	"github.com/dntuanvu/trading-chart-service/internal/models"
 	"github.com/stretchr/testify/assert"
-	"trading-chart-service/internal/aggregator"
-	"trading-chart-service/internal/models"
 )
 
 func TestAggregator_AddTrade(t *testing.T) {

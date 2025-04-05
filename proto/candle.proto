@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package candle;
 
-option go_package = "github.com/yourusername/trading-chart-service/internal/grpc/proto;candle";
+option go_package = "trading-chart-service/internal/grpc/proto;candle";
 
 service CandleService {
   rpc SubscribeCandles (CandleRequest) returns (stream Candle) {}

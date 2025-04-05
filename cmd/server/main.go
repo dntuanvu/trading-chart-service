@@ -8,8 +8,12 @@ import (
 	"syscall"
 	"time"
 
-	"trading-chart-service/internal/aggregator"
-	"trading-chart-service/internal/binance"
+	"github.com/dntuanvu/trading-chart-service/internal/aggregator"
+	"github.com/dntuanvu/trading-chart-service/internal/binance"
+	grpcserver "github.com/dntuanvu/trading-chart-service/internal/grpc"
+
+	"github.com/dntuanvu/trading-chart-service/internal/models"
+	"github.com/dntuanvu/trading-chart-service/internal/persistence"
 )
 
 func main() {
@@ -25,7 +29,7 @@ func main() {
 
 	agg := aggregator.NewAggregator(func(symbol string, ohlc models.OHLC) {
 		log.Printf("[FLUSH] %s => %+v\n", symbol, ohlc)
-		// TODO: Stream via gRPC & persist to DB here
+
 		// 1. Broadcast to gRPC
 		grpcSrv.Broadcast(symbol, ohlc)
 
