@@ -28,17 +28,21 @@ docker-compose up --build
 ```mermaid
 flowchart TD
     Binance[Binance WebSocket API]
-    Binance -->|Real-time Tick Data| GoService[Go Trading Service]
+    GoService[Go Trading Chart Service]
+    Aggregator[OHLC Aggregator (1-min)]
+    GRPC[gRPC Server]
+    Postgres[PostgreSQL DB]
+    Clients[gRPC Clients (Dashboards, Subscribers)]
 
-    GoService --> Aggregator[OHLC Aggregator (1-min)]
-    GoService --> gRPC[gRPC Server]
-    GoService --> Postgres[PostgreSQL DB]
-
-    Aggregator -->|Every 1 min| gRPC
-    gRPC --> Clients[Trader Dashboards (gRPC Subscribers)]
+    Binance --> GoService
+    GoService --> Aggregator
+    GoService --> GRPC
+    GoService --> Postgres
+    Aggregator --> GRPC
+    GRPC --> Clients
 
     subgraph Infrastructure
-        K8s[Kubernetes Deployment]
+        K8s[Kubernetes Cluster]
         Terraform[Terraform IaC]
     end
 
