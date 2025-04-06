@@ -39,3 +39,7 @@ docker-compose up --build
 - `protoc` for gRPC codegen
 - `go test` for unit testing
 - Terraform + Kubernetes for deploy
+
+## Further optimization 
+
+- To implement a good UI/UX in Vue/Nuxt to display the Binance ticked data in real-time 
