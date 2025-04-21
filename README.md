@@ -42,4 +42,7 @@ docker-compose up --build
 
 ## Further optimization 
 
-- To implement a good UI/UX in Vue/Nuxt to display the Binance ticked data in real-time 
+- To implement a good UI/UX in Vue/Nuxt to display the Binance ticked data in real-time
+
+## Potential integration optimization making use of this architecture
+![Integration Diagram](https://github.com/user-attachments/assets/7932ed38-8a72-4ded-9bf0-81fcd9d8cfb8)
